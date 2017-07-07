@@ -1,0 +1,84 @@
+<br><br>
+<ngb-tabset>
+  <ngb-tab title="Radio Buttons">
+    <ng-template ngbTabContent>
+      <div [(ngModel)]="model" ngbRadioGroup name="radioBasic">
+        <label class="btn btn-primary">
+          <input type="radio" [value]="1"> Left (pre-checked)
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" value="middle"> Middle
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" [value]="false"> Right
+        </label>
+      </div>
+      <hr>
+      <pre>{{model}}</pre>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab>
+    <ng-template ngbTabTitle><b>Timt picker</b> title</ng-template>
+    <ng-template ngbTabContent>
+
+      <ngb-timepicker [(ngModel)]="time" [spinners]="spinners"></ngb-timepicker>
+
+      <button class="m-t-1 btn btn-sm btn-outline-{{spinners ? 'success' : 'danger'}}" (click)="toggleSpinners()">
+          Spinners - {{spinners ? "ON" : "OFF"}}
+      </button>
+
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab title="Disabled" [disabled]="true">
+    <ng-template ngbTabContent>
+      <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
+      master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh
+      dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum
+      iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>
+
+
+
+<form novalidate>
+  <input type="text" name="name" placeholder="name" ngModel required>
+  <input type="text" name="street" placeholder="street" ngModel minlength="3">
+  <input type="text" name="city" placeholder="city" ngModel maxlength="10">
+  <input type="text" name="zip" placeholder="zip" ngModel pattern="[A-Za-z]{5}">
+</form>
+
+<p>
+  Tooltips can contain any arbitrary HTML, Angular bindings and even directives!
+  Simply enclose desired content in a <code>&lt;ng-template&gt;</code> element.
+</p>
+
+<ng-template #tipContent>Hello, <b>{{name}}</b>!</ng-template>
+<button type="button" class="btn btn-secondary" [ngbTooltip]="tipContent">
+  I've got markup and bindings in my tooltip!
+</button>
+
+<p>
+  Popovers can contain any arbitrary HTML, Angular bindings and even directives!
+  Simply enclose desired content in a <code>&lt;ng-template&gt;</code> element.
+</p>
+
+<ng-template #popContent>Hello, <b>{{name}}</b>!</ng-template>
+<button type="button" class="btn btn-secondary" [ngbPopover]="popContent" popoverTitle="Fancy content">
+  I've got markup and bindings in my popover!
+</button>
+
+<hr><hr>
+
+<p>A typeahead example that uses custom template for results display and uses object as a model</p>
+
+<ng-template #rt let-r="result" let-t="term">
+  <img [src]="'https://upload.wikimedia.org/wikipedia/commons/thumb/' + r['flag']" width="16">
+  {{ r.name}}
+</ng-template>
+
+<label for="typeahead-template">Search for a state:</label>
+<input id="typeahead-template" type="text" class="form-control" [(ngModel)]="model1" [ngbTypeahead]="search" [resultTemplate]="rt"
+  [inputFormatter]="formatter" />
+<hr>
+<pre>Model: {{ model1 | json }}</pre>
