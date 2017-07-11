@@ -2,6 +2,19 @@
 
 <app-heroes></app-heroes>
 
+
+<section class="example-section">
+  <md-checkbox class="example-margin" [(ngModel)]="checked">Checked</md-checkbox>
+  <md-checkbox class="example-margin" [(ngModel)]="indeterminate">Indeterminate</md-checkbox>
+</section>
+
+<section class="example-section">
+  <label class="example-margin">Align:</label>
+  <md-radio-group [(ngModel)]="align">
+    <md-radio-button class="example-margin" value="start">Start</md-radio-button>
+    <md-radio-button class="example-margin" value="end">End</md-radio-button>
+  </md-radio-group>
+</section>
 <!-- <h1>{{title}}</h1>
 <div *ngIf="selectedHero">
   <h2>{{selectedHero.name}} details!</h2>
